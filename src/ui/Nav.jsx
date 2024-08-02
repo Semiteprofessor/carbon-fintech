@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
-const Wrapper = styled.div`
+const Wrapper = styled.nav`
   position: absolute;
+  top: 0;
   height: 118px;
-  width: 100%;
+  width: 100vw;
   background-color: transparent;
   display: flex;
   align-items: center;
