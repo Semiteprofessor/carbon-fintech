@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const Wrapper = styled.nav`
@@ -39,15 +39,9 @@ const Center = styled.ul`
 `;
 
 const List = styled(NavLink)`
-  &.active:link,
-  &.active:visited {
-    background-color: #4300c2;
-    padding: 8px;
-    border-radius: 4px;
-    color: #fff;
-  }
   list-style: none;
   text-decoration: none;
+  font-weight: 500;
 `;
 
 const Right = styled.ul`
@@ -56,8 +50,27 @@ const Right = styled.ul`
   justify-content: center;
   margin: 0;
   padding: 0;
-  gap: 20px;
+  gap: 30px;
 `;
+
+const RightList = styled(NavLink)`
+  /* &.active:link,
+  &.active:visited, */
+  &:hover {
+    background-color: #4300c2;
+    /* transition: cubic-bezier(0.075, 0.82, 0.165, 1); */
+    box-shadow: 4px 4px 0 gray;
+    /* transform: skewX(10deg); */
+    padding: 8px;
+    border-radius: 4px;
+    color: #fff;
+  }
+  font-size: 16px;
+  font-weight: 500;
+  list-style: none;
+  text-decoration: none;
+`;
+
 const Nav = () => {
   return (
     <Wrapper>
@@ -71,8 +84,8 @@ const Nav = () => {
         <List to="/contact">Contact Us</List>
       </Center>
       <Right>
-        <List to="/login">Login</List>
-        <List to="/register">Sign Up</List>
+        <RightList to="/login">Login</RightList>
+        <RightList to="/register">Sign Up</RightList>
       </Right>
     </Wrapper>
   );

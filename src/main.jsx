@@ -7,11 +7,11 @@ import ErrorFallback from "./ui/ErrorFallback.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ErrorBoundary
+    {/* <ErrorBoundary
       fallbackComponent={ErrorFallback}
       onReset={() => window.location.replace("/")}
-    >
-      <App />
-    </ErrorBoundary>
+    > */}
+    <App />
+    {/* </ErrorBoundary> */}
   </React.StrictMode>
 );

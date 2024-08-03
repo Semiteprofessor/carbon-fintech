@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import Nav from "../ui/Nav";
 
-const Container = styled.div`
+const Wrapper = styled.div`
   display: flex;
-  flex-direction: row;
-  /* align-items: center;
+  /* flex-direction: row;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
   justify-content: space-between; */
 `;
 
@@ -17,24 +19,70 @@ const Left = styled.div`
   justify-content: center;
 `;
 
+const LeftContainer = styled.div`
+  padding: 100px 0px 100px 100px;
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+`;
+
+const Title = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+
+const LeftTitle = styled.h1`
+  font-size: 48px;
+  color: #2b007a;
+  font-weight: bold;
+  /* text-align: left; */
+`;
+
+const Lifestyle = styled.h1`
+  font-size: 48px;
+  background-color: #0c7a1adb;
+  padding: 5px 10px 5px 10px;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: bold;
+`;
+
+const Description = styled.p`
+  font-size: 24px;
+  color: #4f4f4fc4;
+  line-height: 40px;
+  width: 632px;
+`;
+
 const Right = styled.div`
   height: 100vh;
   width: 50%;
   background-image: url("./images/img1.png");
-  background-position: center;
   background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-position: center;
+  background-repeat: no-repeat;
 `;
 
 const Landing = () => {
   return (
-    <Container>
+    <Wrapper>
       <Nav />
-      <Left>Hello</Left>
-      <Right>Man</Right>
-    </Container>
+      <Left>
+        <LeftContainer>
+          <Title>
+            <LeftTitle>Digital Banking For All</LeftTitle>
+            <Lifestyle>Lifestyle</Lifestyle>
+          </Title>
+          <Description>
+            Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa
+            mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.
+          </Description>
+        </LeftContainer>
+      </Left>
+      <Right />
+    </Wrapper>
   );
 };
 
