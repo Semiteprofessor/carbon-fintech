@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Nav from "../ui/Nav";
+import Button from "../ui/Button";
 
 const Wrapper = styled.div`
   display: flex;
@@ -43,10 +44,11 @@ const LeftTitle = styled.h1`
 const Lifestyle = styled.h1`
   font-size: 48px;
   background-color: #0c7a1adb;
-  padding: 5px 10px 5px 10px;
+  padding: 5px 15px 5px 15px;
   border-radius: 4px;
   color: #fff;
   font-weight: bold;
+  width: max-content;
 `;
 
 const Description = styled.p`
@@ -79,6 +81,17 @@ const Landing = () => {
             Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa
             mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.
           </Description>
+          <Button
+            path="/get-started"
+            title="Get Started"
+            backgroundColor="#2B007A"
+            color="#fff"
+            padding="12px 24px 12px 24px"
+            borderRadius={5}
+            border="none"
+            fontWeight={500}
+            width="max-content"
+          />
         </LeftContainer>
       </Left>
       <Right />
