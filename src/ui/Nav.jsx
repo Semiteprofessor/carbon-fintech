@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import Logo from "./Logo";
 
 const Wrapper = styled.nav`
   position: absolute;
@@ -11,22 +12,6 @@ const Wrapper = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`;
-
-const Left = styled.span`
-  font-size: 36px;
-  font-weight: bold;
-  color: #4300c2;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-`;
-
-const Logo = styled.img`
-  width: 30px;
-  height: 30px;
 `;
 
 const Center = styled.ul`
@@ -57,7 +42,7 @@ const RightList = styled(NavLink)`
   /* &.active:link,
   &.active:visited, */
   &:hover {
-    background-color: #4300c2;
+    background-color: #2b007aa6;
     /* transition: cubic-bezier(0.075, 0.82, 0.165, 1); */
     box-shadow: 4px 4px 0 gray;
     /* transform: skewX(10deg); */
@@ -74,10 +59,7 @@ const RightList = styled(NavLink)`
 const Nav = () => {
   return (
     <Wrapper>
-      <Left>
-        <Logo src="./images/logo.png" />
-        Carbon
-      </Left>
+      <Logo />
       <Center>
         <List to="/">Home</List>
         <List to="/product">Product</List>

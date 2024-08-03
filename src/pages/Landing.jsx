@@ -12,8 +12,8 @@ const Wrapper = styled.div`
 `;
 
 const Left = styled.div`
+  flex: 1;
   height: 100vh;
-  width: 50%;
   background-color: var(--color-grey-0);
   display: flex;
   align-items: center;
@@ -59,8 +59,8 @@ const Description = styled.p`
 `;
 
 const Right = styled.div`
+  flex: 1;
   height: 100vh;
-  width: 50%;
   background-image: url("./images/img1.png");
   background-size: cover;
   background-position: center;
