@@ -4,6 +4,45 @@ import Form from "../../ui/Form";
 import Input from "../../ui/Input";
 import FormRowVertical from "../../ui/FormRowVertical";
 import Button from "../../ui/Button";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const DontHave = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5em;
+  margin-top: 1em;
+`;
+
+const StyledCheckbox = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5em;
+  margin: 0.5em 0.5em 1em 0;
+`;
+
+const Label = styled.span`
+  font-weight: 500;
+  font-size: 16px;
+  color: #333;
+`;
+
+const ForgotPassword = styled(Link)`
+  font-weight: 500;
+  font-size: 16px;
+  color: #333;
+  text-decoration: none;
+  color: blue;
+`;
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -44,6 +83,14 @@ const LoginForm = () => {
         />
       </FormRowVertical>
 
+      <Container>
+        <StyledCheckbox>
+          <Label>Remember Me</Label>
+          <Input type="checkbox" />
+        </StyledCheckbox>
+        <ForgotPassword to="/forgot-password">Forgot Password?</ForgotPassword>
+      </Container>
+
       <Button
         type="submit"
         title="Log in"
@@ -53,6 +100,11 @@ const LoginForm = () => {
         borderRadius={5}
         width="100%"
       />
+
+      <DontHave>
+        <Label>Don't have an account?</Label>
+        <ForgotPassword to="/sign-up">Sign up</ForgotPassword>
+      </DontHave>
     </Form>
   );
 };
