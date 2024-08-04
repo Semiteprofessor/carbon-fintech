@@ -3,6 +3,8 @@ import styled from "styled-components";
 const StyledFormRow = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
   gap: 0.8rem;
   padding: 1rem 0;
 `;

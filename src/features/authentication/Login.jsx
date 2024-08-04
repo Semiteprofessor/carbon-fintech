@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import Logo from "../../ui/Logo";
+import LoginForm from "./LoginForm";
+import Heading from "../../ui/Heading";
 
 const StyledLogin = styled.div`
-  text-align: center;
+  display: flex;
+  flex-direction: column;
 `;
 
 const StyledLogo = styled.div`
@@ -23,7 +26,11 @@ const Wrapper = styled.div`
 
 const Left = styled.div`
   flex: 1;
-  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  text-align: center;
+  padding: 20px 100px 20px 100px;
 `;
 const Right = styled.div`
   flex: 1;
@@ -38,11 +45,11 @@ const Login = () => {
       </StyledLogo>
       <Wrapper>
         <Left>
-          <form>
-            <input type="text" placeholder="Email" />
-            <input type="password" placeholder="Password" />
-            <button type="submit">Login</button>
-          </form>
+          <Heading as="h1">Log in to your Account</Heading>
+          <Heading as="h4">
+            Log in to you Account to continue the Carbon experience
+          </Heading>
+          <LoginForm />
         </Left>
         <Right>
           <p>Don't have an account?</p>
