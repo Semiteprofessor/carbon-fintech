@@ -99,6 +99,7 @@ const LoginForm = () => {
         padding="12px 24px 12px 24px"
         borderRadius={5}
         width="100%"
+        path="/dashboard"
       />
 
       <DontHave>

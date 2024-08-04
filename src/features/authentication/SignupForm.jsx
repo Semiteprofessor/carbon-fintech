@@ -10,7 +10,9 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  text-align: left;
+  margin-bottom: 1rem;
+  gap: 0.5em;
 `;
 
 const DontHave = styled.div`
@@ -19,14 +21,6 @@ const DontHave = styled.div`
   align-items: center;
   gap: 0.5em;
   margin-top: 1em;
-`;
-
-const StyledCheckbox = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.5em;
-  margin: 0.5em 0.5em 1em 0;
 `;
 
 const Label = styled.span`
@@ -47,7 +41,7 @@ const Row = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 0.5em;
+  gap: 2em;
 `;
 
 const SignupForm = () => {
@@ -142,23 +136,19 @@ const SignupForm = () => {
       </Row>
 
       <Container>
-        <StyledCheckbox>
-          <Label>I agree to Carbon</Label>
-          <Input type="checkbox" />
-        </StyledCheckbox>
-        <ForgotPassword to="/forgot-password">
-          Terms and Conditions
-        </ForgotPassword>
+        <Label>I agree to Carbon </Label>
+        <ForgotPassword to="/terms"> Terms and Conditions</ForgotPassword>
       </Container>
 
       <Button
         type="submit"
-        title="Log in"
+        title="Sign up"
         backgroundColor="#2B007A"
         color="#fff"
         padding="12px 24px 12px 24px"
         borderRadius={5}
         width="100%"
+        path="/otp"
       />
 
       <DontHave>

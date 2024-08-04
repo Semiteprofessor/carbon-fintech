@@ -3,8 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const ButtonStyle = styled.button`
-  list-style: none;
-  text-decoration: none;
+  cursor: pointer;
 `;
 
 const Button = ({
