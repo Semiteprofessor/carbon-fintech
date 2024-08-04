@@ -34,7 +34,10 @@ const Left = styled.div`
 `;
 const Right = styled.div`
   flex: 1;
-  padding: 2rem;
+  background-image: url("./images/login.png");
+  background-size: cover;
+  background-position: center;
+  margin-right: 100px;
 `;
 
 const Login = () => {
@@ -51,10 +54,7 @@ const Login = () => {
           </Heading>
           <LoginForm />
         </Left>
-        <Right>
-          <p>Don't have an account?</p>
-          <button>Sign Up</button>
-        </Right>
+        <Right />
       </Wrapper>
     </StyledLogin>
   );
