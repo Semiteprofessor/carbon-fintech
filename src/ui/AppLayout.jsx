@@ -1,3 +1,7 @@
+import { Outlet } from "react-router-dom";
+import Header from "./Header";
+import Sidebar from "./Sidebar";
+
 const StyledAppLayout = styled.div`
   display: grid;
   grid-template-columns: 26rem 1fr;
@@ -20,9 +24,17 @@ const Container = styled.div`
 `;
 
 const AppLayout = () => {
-  return <StyledAppLayout>
-    
-  </StyledAppLayout>;
+  return (
+    <StyledAppLayout>
+      <Header />
+      <Sidebar />
+      <Main>
+        <Container>
+          <Outlet />
+        </Container>
+      </Main>
+    </StyledAppLayout>
+  );
 };
 
 export default AppLayout;
