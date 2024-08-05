@@ -1,4 +1,4 @@
-import supabase, { supabaseUrl } from "./supabase";
+import supabase from "./supabase";
 import { BASE_URL } from "../base";
 
 export const login = async ({ email, password }) => {
@@ -31,4 +31,11 @@ export const getCurrentUser = async () => {
     throw new Error(error.message);
   }
   return data?.user;
+};
+
+export const logout = async () => {
+  const { error } = await supabase.signOut();
+  if (error) {
+    throw new Error(error.message);
+  }
 };

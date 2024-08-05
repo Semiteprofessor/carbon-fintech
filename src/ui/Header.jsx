@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import HeaderMenu from "./HeaderMenu";
 import UserAvatar from "../features/authentication/UserAvatar";
+import SearchInput from "./SearchInput";
 
 const StyledHeader = styled.header`
   background-color: #fff;
@@ -11,9 +12,11 @@ const StyledHeader = styled.header`
   align-items: center;
   justify-content: flex-end;
 `;
+
 const Header = () => {
   return (
     <StyledHeader>
+      <SearchInput />
       <UserAvatar />
       <HeaderMenu />
     </StyledHeader>
