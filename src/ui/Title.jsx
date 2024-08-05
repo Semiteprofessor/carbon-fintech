@@ -2,7 +2,7 @@ import Heading from "./Heading";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  padding: 10px 20px 10px 20px;
+  padding: 5px 20px 5px 20px;
   background-color: #600aff;
   color: white;
 `;

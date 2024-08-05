@@ -1,18 +1,22 @@
 import styled from "styled-components";
 import PaymentChart from "./PaymentChart";
 import StatsContent from "./StatsContent";
+import PopIcons from "../../ui/PopIcons";
 
 const StyledDashboardLayout = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 4rem;
+  gap: 3rem;
 `;
 
 const Stats = styled.div`
   flex: 1;
-  height: 35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  height: 30rem;
   padding: 10px 30px;
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
@@ -25,29 +29,17 @@ const Stats = styled.div`
   );
 `;
 
-const StyledStatsContent = styled.div`
-  background-color: #600affc4;
-  border-radius: 10px;
-  position: relative;
-  height: 18rem;
-  overflow: hidden;
-`;
-
-const Image1 = styled.img`
-  position: absolute;
-  left: -2rem;
-  bottom: -2em;
-`;
-
-const Image2 = styled.img`
-  position: absolute;
-  right: -1rem;
-  width: 9rem;
+const PopUpContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
 `;
 
 const Chart = styled.div`
   flex: 1;
-  height: 35rem;
+  height: 30rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 `;
@@ -56,10 +48,10 @@ const DashboardLayout = () => {
   return (
     <StyledDashboardLayout>
       <Stats>
-        <StyledStatsContent>
-          <Image1 src="./images/dash1.png" />
-          <Image2 src="./images/dash2.png" />
-        </StyledStatsContent>
+        <StatsContent />
+        <PopUpContainer>
+          <PopIcons>Top Up</PopIcons>
+        </PopUpContainer>
       </Stats>
       <Chart>
         <PaymentChart />{" "}
