@@ -58,7 +58,7 @@ const SideNav = () => {
         <li>
           <StyledNavLink to="/dashboard">
             <GoHomeFill />
-            <span>Home</span>
+            <span>Dashboard</span>
           </StyledNavLink>
         </li>
         <li>
