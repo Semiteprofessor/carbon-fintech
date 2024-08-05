@@ -28,7 +28,10 @@ const UserAvatar = () => {
   return (
     <StyledUserAvatar>
       {/* <Avatar src={avatar || "avatar.png"} alt={`Avatar of ${fullName}`} /> */}
-      <Avatar src={avatar || "avatar.png"} alt={`Avatar of John Doe`} />
+      <Avatar
+        src={avatar || "./images/avatar.png"}
+        alt={`Avatar of John Doe`}
+      />
       {/* <span>{fullName}</span> */}
       <span>John Doe</span>
     </StyledUserAvatar>

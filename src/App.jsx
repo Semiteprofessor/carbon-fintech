@@ -7,15 +7,22 @@ import GlobalStyles from "./styles/GlobalStyles";
 import Landing from "./pages/Landing";
 import Product from "./pages/Product";
 import Contact from "./pages/Contact";
-import Terms from "./pages/Terms";
 import Login from "./features/authentication/Login";
 import Signup from "./features/authentication/Signup";
 import ForgotPassword from "./features/authentication/ForgotPassword";
 import Otp from "./features/authentication/Otp";
+
+// Authenticated users
+import Dashboard from "./pages/Dashboard";
+import Activity from "./pages/Activity";
+import Bills from "./pages/Bills";
+import Transactions from "./pages/Transactions";
+import Complaints from "./pages/Complaints";
+import Settings from "./pages/Settings";
+import Terms from "./pages/Terms";
 import GetStarted from "./pages/GetStarted";
 import PageNotFound from "./pages/PageNotFound";
 import AppLayout from "./ui/AppLayout";
-import Dashboard from "./pages/Dashboard";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -48,6 +55,11 @@ function App() {
           <Route element={<AppLayout />}>
             <Route index element={<Navigate replace to="dashboard" />} />
             <Route path="dashboard" element={<Dashboard />} />
+            <Route path="activity" element={<Activity />} />
+            <Route path="bills" element={<Bills />} />
+            <Route path="transactions" element={<Transactions />} />
+            <Route path="complaints" element={<Complaints />} />
+            <Route path="settings" element={<Settings />} />
           </Route>
         </Routes>
       </BrowserRouter>
