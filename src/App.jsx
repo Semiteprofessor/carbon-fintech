@@ -24,6 +24,7 @@ import GetStarted from "./pages/GetStarted";
 import PageNotFound from "./pages/PageNotFound";
 import AppLayout from "./ui/AppLayout";
 import { DarkModeProvider } from "./context/DarkModeContext";
+import Account from "./pages/Account";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -62,6 +63,7 @@ function App() {
               <Route path="transactions" element={<Transactions />} />
               <Route path="complaints" element={<Complaints />} />
               <Route path="settings" element={<Settings />} />
+              <Route path="account" element={<Account />} />
             </Route>
           </Routes>
         </BrowserRouter>
