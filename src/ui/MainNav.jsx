@@ -1,9 +1,5 @@
-import React from 'react'
-
 const MainNav = () => {
-  return (
-    <div>MainNav</div>
-  )
-}
+  return <div>MainNav</div>;
+};
 
-export default MainNav
+export default MainNav;
