@@ -16,9 +16,9 @@ const Dashboard = () => {
   const { topUp, setTopUp, send, setSend, withdraw, setWithdraw } = usePopUp();
   return (
     <Wrapper>
-      {topUp && <DashboardPopUp />}
-      {send && <DashboardPopUp />}
-      {withdraw && <DashboardPopUp />}
+      {topUp && <DashboardPopUp title="Top Up" />}
+      {send && <DashboardPopUp title="Send" />}
+      {withdraw && <DashboardPopUp title="Withdraw" />}
       <Title>Dashboard</Title>
       <DashboardLayout />
       <RecentTransactionTable />

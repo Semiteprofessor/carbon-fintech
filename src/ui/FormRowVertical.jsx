@@ -7,6 +7,7 @@ const StyledFormRow = styled.div`
   text-align: left;
   gap: 0.8rem;
   padding: 1rem 0;
+  width: 100%;
 `;
 
 const Label = styled.label`

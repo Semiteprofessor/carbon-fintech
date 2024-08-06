@@ -1,5 +1,11 @@
 import styled from "styled-components";
-import { FaWallet } from "react-icons/fa6";
+import { IoWalletOutline } from "react-icons/io5";
+import Heading from "./Heading";
+import FormRowVertical from "./FormRowVertical";
+import Input from "./Input";
+import PopUpForm from "../features/dashboard/PopUpForm";
+import { IoCloseCircle } from "react-icons/io5";
+import { usePopUp } from "../context/PopUpContext";
 
 const StyledPopUp = styled.div`
   position: fixed;
@@ -16,8 +22,9 @@ const StyledPopUp = styled.div`
 `;
 
 const Container = styled.div`
-  max-width: 494px;
-  height: 566px;
+  position: relative;
+  max-width: 544px;
+  height: auto;
   width: 0 auto;
   background-color: white;
   padding: 40px;
@@ -27,16 +34,50 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 15px;
 `;
 
 const Icon = styled.div`
-display: flex;
+  height: 11rem;
+  width: 11rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #b2b2b2;
+`;
+
+const CloseBtn = styled.div`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border-radius: 50%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.8s ease;
+  cursor: pointer;
 `;
 
 const DashboardPopUp = () => {
+  const { topUp, send, withdraw, setTopUp, setSend, setWithdraw } = usePopUp();
+
   return (
     <StyledPopUp>
-      <Container>Hello</Container>
+      <CloseBtn onClick={() => setTopUp((topUp) => !topUp)}>
+        <IoCloseCircle size={54} color="#fff" />
+      </CloseBtn>
+      <Container>
+        <Icon>
+          <IoWalletOutline size={76} color="#fff" />
+        </Icon>
+        <Heading as="h1">Send to a Carbon Wallet</Heading>
+        <Heading as="h4">Send money to another Carbon Wallet</Heading>
+        <FormRowVertical>
+          <PopUpForm />
+        </FormRowVertical>
+      </Container>
     </StyledPopUp>
   );
 };

@@ -54,7 +54,7 @@ const PopIcons = ({ title }) => {
       {title === "Send" && (
         <StyledPop onClick={handleSend}>
           <Icon>
-            <MdOutlineAddCard size={36} color="#fff" />
+            <TbCreditCardPay size={36} color="#fff" />
           </Icon>
           <PopTitle>{title}</PopTitle>
         </StyledPop>
@@ -62,7 +62,7 @@ const PopIcons = ({ title }) => {
       {title === "Send" && (
         <StyledPop onClick={handleWithdraw}>
           <Icon>
-            <MdOutlineAddCard size={36} color="#fff" />
+            <PiHandWithdrawBold size={36} color="#fff" />
           </Icon>
           <PopTitle>{title}</PopTitle>
         </StyledPop>
