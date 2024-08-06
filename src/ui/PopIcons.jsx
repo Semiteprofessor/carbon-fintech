@@ -1,4 +1,6 @@
 import { MdOutlineAddCard } from "react-icons/md";
+import { TbCreditCardPay } from "react-icons/tb";
+import { PiHandWithdrawBold } from "react-icons/pi";
 import styled from "styled-components";
 
 const StyledPop = styled.div`
@@ -11,8 +13,8 @@ const StyledPop = styled.div`
 `;
 
 const Icon = styled.div`
-  width: 8rem;
-  height: 8rem;
+  width: 7rem;
+  height: 7rem;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -26,13 +28,19 @@ const PopTitle = styled.h2`
   margin-bottom: 10px;
   color: #600affc4;
 `;
-const PopIcons = ({ children }) => {
+const PopIcons = ({ title }) => {
   return (
     <StyledPop>
       <Icon>
-        <MdOutlineAddCard size={34} color="#fff" />
+        {title === "Top Up" ? (
+          <MdOutlineAddCard size={36} color="#fff" />
+        ) : title === "Send" ? (
+          <TbCreditCardPay size={36} color="#fff" />
+        ) : (
+          <PiHandWithdrawBold size={36} color="#fff" />
+        )}
       </Icon>
-      <PopTitle>{children}</PopTitle>
+      <PopTitle>{title}</PopTitle>
     </StyledPop>
   );
 };

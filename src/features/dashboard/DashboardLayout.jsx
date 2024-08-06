@@ -34,7 +34,7 @@ const PopUpContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 4rem;
 `;
 
 const Chart = styled.div`
@@ -50,7 +50,9 @@ const DashboardLayout = () => {
       <Stats>
         <StatsContent />
         <PopUpContainer>
-          <PopIcons>Top Up</PopIcons>
+          <PopIcons title="Top Up" />
+          <PopIcons title="Send" />
+          <PopIcons title="Withdraw" />
         </PopUpContainer>
       </Stats>
       <Chart>
