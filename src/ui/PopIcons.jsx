@@ -43,30 +43,28 @@ const PopIcons = ({ title }) => {
   };
   return (
     <>
-      {title === "Top Up" && (
-        <StyledPop onClick={handleTopUp}>
-          <Icon>
+      <StyledPop
+        onClick={
+          title === "Top Up"
+            ? handleTopUp
+            : title === "Send"
+            ? handleSend
+            : handleWithdraw
+        }
+      >
+        <Icon>
+          {title === "Top Up" ? (
             <MdOutlineAddCard size={36} color="#fff" />
-          </Icon>
-          <PopTitle>{title}</PopTitle>
-        </StyledPop>
-      )}
-      {title === "Send" && (
-        <StyledPop onClick={handleSend}>
-          <Icon>
+          ) : title === "Send" ? (
             <TbCreditCardPay size={36} color="#fff" />
-          </Icon>
-          <PopTitle>{title}</PopTitle>
-        </StyledPop>
-      )}
-      {title === "Send" && (
-        <StyledPop onClick={handleWithdraw}>
-          <Icon>
+          ) : (
             <PiHandWithdrawBold size={36} color="#fff" />
-          </Icon>
-          <PopTitle>{title}</PopTitle>
-        </StyledPop>
-      )}
+          )}
+        </Icon>
+        <PopTitle>
+          {title === "Top Up" ? title : title === "Send" ? title : title}
+        </PopTitle>
+      </StyledPop>
     </>
   );
 };

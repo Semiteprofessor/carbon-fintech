@@ -60,25 +60,70 @@ const CloseBtn = styled.div`
   cursor: pointer;
 `;
 
-const DashboardPopUp = () => {
+const DashboardPopUp = ({ title }) => {
   const { topUp, send, withdraw, setTopUp, setSend, setWithdraw } = usePopUp();
 
+  const handleTopUp = () => {
+    setTopUp((topUp) => !topUp);
+    setSend(false);
+    setWithdraw(false);
+  };
+  const handleSend = () => {
+    setSend((send) => !send);
+    setTopUp(false);
+    setWithdraw(false);
+  };
+  const handleWithdraw = () => {
+    setWithdraw((withdraw) => !withdraw);
+    setTopUp(false);
+    setSend(false);
+  };
+
   return (
-    <StyledPopUp>
-      <CloseBtn onClick={() => setTopUp((topUp) => !topUp)}>
-        <IoCloseCircle size={54} color="#fff" />
-      </CloseBtn>
-      <Container>
-        <Icon>
-          <IoWalletOutline size={76} color="#fff" />
-        </Icon>
-        <Heading as="h1">Send to a Carbon Wallet</Heading>
-        <Heading as="h4">Send money to another Carbon Wallet</Heading>
-        <FormRowVertical>
-          <PopUpForm />
-        </FormRowVertical>
-      </Container>
-    </StyledPopUp>
+    <>
+      <StyledPopUp>
+        <CloseBtn
+          onClick={
+            title === "Top Up"
+              ? handleTopUp
+              : title === "Send"
+              ? handleSend
+              : handleWithdraw
+          }
+        >
+          <IoCloseCircle size={54} color="#fff" />
+        </CloseBtn>
+        <Container>
+          <Icon>
+            <IoWalletOutline size={76} color="#fff" />
+          </Icon>
+          {title === "Top Up" ? (
+            <>
+              <Heading as="h1">Send to a Carbon Wallet</Heading>
+              <Heading as="h4">Send money to another Carbon Wallet</Heading>
+            </>
+          ) : title === "Send" ? (
+            <>
+              <Heading as="h1">Top up your wallet</Heading>
+              <Heading as="h4">
+                Top up your Wallet from your bank acount
+              </Heading>
+            </>
+          ) : (
+            <>
+              <Heading as="h1">Withdraw from wallet</Heading>
+              <Heading as="h4">
+                Withdraw from your wallet into your bank account
+              </Heading>
+            </>
+          )}
+
+          <FormRowVertical>
+            <PopUpForm title={title} />
+          </FormRowVertical>
+        </Container>
+      </StyledPopUp>
+    </>
   );
 };
 

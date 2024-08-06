@@ -29,9 +29,11 @@ const Limit = styled.span`
   color: red;
 `;
 
-const PopUpForm = () => {
+const PopUpForm = ({ title }) => {
   const [amount, setAmount] = useState("");
   const [walletId, setWalletId] = useState("");
+  const [account, setAccount] = useState("");
+  const [receivingAccount, setReceivingAccount] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,21 +49,65 @@ const PopUpForm = () => {
           type="amount"
           id="amount"
           autoComplete="amount"
-          placeholder="Enter AMount"
+          placeholder="Enter Amount"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
           //   disabled={isLoading}
         />
       </FormRowVertical>
 
-      <FormRowVertical label="walletId">
+      <FormRowVertical
+        label={`${
+          title === "Top Up"
+            ? "Wallet ID"
+            : title === "Send"
+            ? "Account"
+            : "Receiving Account"
+        }`}
+      >
         <Input
-          type="walletId"
-          id="walletId"
-          autoComplete="walletId"
-          placeholder="Enter Wallet ID"
-          value={walletId}
-          onChange={(e) => setWalletId(e.target.value)}
+          type={`${
+            title === "Top Up"
+              ? "walletId"
+              : title === "Send"
+              ? "account"
+              : "receivingAccount"
+          }`}
+          id={`${
+            title === "Top Up"
+              ? "walletId"
+              : title === "Send"
+              ? "account"
+              : "receivingAccount"
+          }`}
+          autoComplete={`${
+            title === "Top Up"
+              ? "walletId"
+              : title === "Send"
+              ? "account"
+              : "receivingAccount"
+          }`}
+          placeholder={`${
+            title === "Top Up"
+              ? "Enter Wallet ID"
+              : title === "Send"
+              ? "Enter Account"
+              : "Enter Receiving Account"
+          }`}
+          value={`${
+            title === "Top Up"
+              ? walletId
+              : title === "Send"
+              ? account
+              : receivingAccount
+          }`}
+          onChange={
+            title === "Top Up"
+              ? (e) => setWalletId(e.target.value)
+              : title === "Send"
+              ? (e) => setAccount(e.target.value)
+              : (e) => setReceivingAccount(e.target.value)
+          }
           //   disabled={isLoading}
         />
       </FormRowVertical>
@@ -74,7 +120,6 @@ const PopUpForm = () => {
         padding="12px 24px 12px 24px"
         borderRadius={5}
         width="100%"
-        path="/dashboard"
       />
 
       <DontHave>
