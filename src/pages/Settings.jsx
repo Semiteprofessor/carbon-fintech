@@ -1,9 +1,11 @@
-
+import Title from "../ui/Title";
 
 const Settings = () => {
   return (
-    <div>Settings</div>
-  )
-}
+    <div>
+      <Title>Settings</Title>
+    </div>
+  );
+};
 
-export default Settings
+export default Settings;

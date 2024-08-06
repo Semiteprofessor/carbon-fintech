@@ -1,5 +1,11 @@
+import Title from "../ui/Title";
+
 const Bills = () => {
-  return <div>Bills</div>;
+  return (
+    <div>
+      <Title>Bills</Title>
+    </div>
+  );
 };
 
 export default Bills;

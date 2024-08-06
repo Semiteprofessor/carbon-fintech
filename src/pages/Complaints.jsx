@@ -1,9 +1,11 @@
-
+import Title from "../ui/Title";
 
 const Complaints = () => {
   return (
-    <div>Complaints</div>
-  )
-}
+    <div>
+      <Title>Complaints</Title>
+    </div>
+  );
+};
 
-export default Complaints
+export default Complaints;
