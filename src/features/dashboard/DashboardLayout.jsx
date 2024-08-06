@@ -44,7 +44,7 @@ const Chart = styled.div`
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 `;
 
-const DashboardLayout = () => {
+const DashboardLayout = ({}) => {
   return (
     <StyledDashboardLayout>
       <Stats>

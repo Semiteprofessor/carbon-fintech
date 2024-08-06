@@ -2,6 +2,7 @@ import { MdOutlineAddCard } from "react-icons/md";
 import { TbCreditCardPay } from "react-icons/tb";
 import { PiHandWithdrawBold } from "react-icons/pi";
 import styled from "styled-components";
+import { usePopUp } from "../context/PopUpContext";
 
 const StyledPop = styled.div`
   display: flex;
@@ -28,20 +29,45 @@ const PopTitle = styled.h2`
   margin-bottom: 10px;
   color: #600affc4;
 `;
+
 const PopIcons = ({ title }) => {
+  const { topUp, setTopUp, send, setSend, withdraw, setWithdraw } = usePopUp();
+  const handleTopUp = () => {
+    setTopUp((topUp) => !topUp);
+  };
+  const handleSend = () => {
+    setSend((send) => !send);
+  };
+  const handleWithdraw = () => {
+    setWithdraw((withdraw) => !withdraw);
+  };
   return (
-    <StyledPop>
-      <Icon>
-        {title === "Top Up" ? (
-          <MdOutlineAddCard size={36} color="#fff" />
-        ) : title === "Send" ? (
-          <TbCreditCardPay size={36} color="#fff" />
-        ) : (
-          <PiHandWithdrawBold size={36} color="#fff" />
-        )}
-      </Icon>
-      <PopTitle>{title}</PopTitle>
-    </StyledPop>
+    <>
+      {title === "Top Up" && (
+        <StyledPop onClick={handleTopUp}>
+          <Icon>
+            <MdOutlineAddCard size={36} color="#fff" />
+          </Icon>
+          <PopTitle>{title}</PopTitle>
+        </StyledPop>
+      )}
+      {title === "Send" && (
+        <StyledPop onClick={handleSend}>
+          <Icon>
+            <MdOutlineAddCard size={36} color="#fff" />
+          </Icon>
+          <PopTitle>{title}</PopTitle>
+        </StyledPop>
+      )}
+      {title === "Send" && (
+        <StyledPop onClick={handleWithdraw}>
+          <Icon>
+            <MdOutlineAddCard size={36} color="#fff" />
+          </Icon>
+          <PopTitle>{title}</PopTitle>
+        </StyledPop>
+      )}
+    </>
   );
 };
 
