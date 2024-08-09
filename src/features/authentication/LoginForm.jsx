@@ -73,9 +73,9 @@ const LoginForm = () => {
     // };
   };
 
-  useEffect(() => {
-    if (isAuthenticated) navigate("/app", { replace: true });
-  }, [isAuthenticated, navigate]);
+  // useEffect(() => {
+  //   if (!isAuthenticated) navigate("/", { replace: true });
+  // }, [isAuthenticated, navigate]);
 
   return (
     <Form onSubmit={handleSubmit}>
