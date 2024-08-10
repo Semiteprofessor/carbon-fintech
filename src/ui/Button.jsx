@@ -7,7 +7,6 @@ const ButtonStyle = styled.button`
 `;
 
 const Button = ({
-  path,
   type,
   color,
   backgroundColor,
@@ -21,30 +20,27 @@ const Button = ({
   width,
 }) => {
   return (
-    <Link to={path}>
-      <ButtonStyle
-        onClick={onClick}
-        type={type}
-        style={{
-          padding,
-          outline,
-          backgroundColor,
-          color,
-          border,
-          fontWeight,
-          width,
-          borderRadius,
-        }}
-      >
-        {title}
-      </ButtonStyle>
-    </Link>
+    <ButtonStyle
+      onClick={onClick}
+      type={type}
+      style={{
+        padding,
+        outline,
+        backgroundColor,
+        color,
+        border,
+        fontWeight,
+        width,
+        borderRadius,
+      }}
+    >
+      {title}
+    </ButtonStyle>
   );
 };
 
 Button.propTypes = {
   type: PropTypes.string,
-  path: PropTypes.string.isRequired,
   color: PropTypes.string,
   backgroundColor: PropTypes.string,
   title: PropTypes.string.isRequired,
