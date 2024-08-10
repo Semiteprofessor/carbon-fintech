@@ -1,4 +1,10 @@
-import { createContext, useContext, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from "react";
 import axios from "axios";
 import { BASE_URL } from "../base";
 
@@ -11,34 +17,53 @@ const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const login = async (email, password) => {
-    await axios(`${BASE_URL}/user/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: JSON.stringify({ email, password }),
-    })
-      .then((response) => {
-        console.log(response.data);
-        if (response.status !== 200) {
-          throw new Error(response.data.message);
-        }
-        localStorage.setItem("userToken", response.data.token);
-        setUser(response.data.data);
-        setUserToken(response.data.token);
-        setIsAuthenticated(true);
-        setIsLoading(false);
+  const login = useCallback(() => {
+    return async (email, password) => {
+      await axios(`${BASE_URL}/user/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: JSON.stringify({ email, password }),
       })
-      .catch((error) => {
-        setError(error);
-        setIsLoading(false);
-      });
+        .then((response) => {
+          console.log(response.data);
+          if (response.status !== 200) {
+            throw new Error(response.data.message);
+          }
+          localStorage.setItem("userToken", response.data.token);
+          setUser(response.data.data);
+          setUserToken(response.data.token);
+          setIsAuthenticated(true);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          setError(error);
+          setIsLoading(false);
+        });
+    };
+  }, []);
+
+  const logout = () => {
+    localStorage.removeItem("userToken");
+    setUser(null);
+    setUserToken(null);
+    setIsAuthenticated(false);
+    setIsLoading(false);
+    setError("");
   };
 
   return (
     <AuthContext.Provider
-      value={{ isAuthenticated, user, userToken, login, isLoading, error }}
+      value={{
+        isAuthenticated,
+        user,
+        userToken,
+        login,
+        logout,
+        isLoading,
+        error,
+      }}
     >
       {children}
     </AuthContext.Provider>
