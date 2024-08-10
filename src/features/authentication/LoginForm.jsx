@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Form from "../../ui/Form";
 import Input from "../../ui/Input";
 import FormRowVertical from "../../ui/FormRowVertical";
 import Button from "../../ui/Button";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 const Container = styled.div`
   display: flex;
@@ -48,15 +49,23 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { login, isAuthenticated } = useAuth();
+
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Call API to login with email and password
     console.log("Login with email:", email, "password:", password);
-    if (!email || !password) return;
 
+    if (email && password) login(email, password);
     setEmail("");
     setPassword("");
   };
+
+  useEffect(() => {
+    if (isAuthenticated) navigate("/dashboard", { replace: true });
+  }, [isAuthenticated, navigate]);
+
   return (
     <Form onSubmit={handleSubmit}>
       <FormRowVertical label="Email Address">
@@ -97,7 +106,7 @@ const LoginForm = () => {
         backgroundColor="#2B007A"
         color="#fff"
         padding="12px 24px 12px 24px"
-        borderRadius={5}
+        borderRadius="5px"
         width="100%"
         path="/dashboard"
       />
