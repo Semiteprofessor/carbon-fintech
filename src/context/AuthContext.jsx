@@ -11,48 +11,6 @@ const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
-  //   const login = async (email, password) => {
-  //     setIsLoading(true);
-  //     try {
-  //       await fetch(`${BASE_URL}/user/login`, {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify({ email, password }),
-  //       })
-  //         .then((response) => {
-  //           response.json();
-  //           if (response.status !== 200) {
-  //             throw new Error(response.message);
-  //           }
-  //         })
-  //         .then((data) => {
-  //           localStorage.setItem("userToken", data.token);
-  //           setUser(data);
-  //           setUserToken(data.token);
-  //           setIsAuthenticated(true);
-  //           setIsLoading(false);
-  //         });
-
-  //       //   const data = await res.json();
-
-  //       //   if (res.status !== true) {
-  //       //     throw new Error(data.message);
-  //       //   }
-
-  //       //   console.log(data.token);
-  //       //   console.log(data.message);
-  //       //   setUser(data);
-  //       //   setUserToken(data.token);
-  //       //   setIsAuthenticated(true);
-  //       //   setIsLoading(false);
-  //     } catch (error) {
-  //       setError(error.message);
-  //       setIsLoading(false);
-  //     }
-  //   };
-
   const login = async (email, password) => {
     await axios(`${BASE_URL}/user/login`, {
       method: "POST",
@@ -67,7 +25,7 @@ const AuthProvider = ({ children }) => {
           throw new Error(response.data.message);
         }
         localStorage.setItem("userToken", response.data.token);
-        setUser(response.data);
+        setUser(response.data.data);
         setUserToken(response.data.token);
         setIsAuthenticated(true);
         setIsLoading(false);
