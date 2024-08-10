@@ -87,7 +87,7 @@ const Landing = () => {
             backgroundColor="#2B007A"
             color="#fff"
             padding="12px 24px 12px 24px"
-            borderRadius={5}
+            borderRadius="5px"
             border="none"
             fontWeight={500}
             width="max-content"

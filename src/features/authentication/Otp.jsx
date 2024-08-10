@@ -46,7 +46,7 @@ const Otp = () => {
         backgroundColor="#2B007A"
         color="#fff"
         padding="12px 24px 12px 24px"
-        borderRadius={5}
+        borderRadius="5px"
       />
       <p>
         Didn't receive the OTP? <a href="#">Resend</a>

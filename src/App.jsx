@@ -18,6 +18,7 @@ const ForgotPassword = lazy(() =>
   import("./features/authentication/ForgotPassword")
 );
 const Otp = lazy(() => import("./features/authentication/Otp"));
+const Loader = lazy(() => import("./ui/Loader"));
 
 // Authenticated users
 const Dashboard = lazy(() => import("./pages/Dashboard"));
@@ -50,45 +51,10 @@ function App() {
         <QueryClientProvider client={queryClient}>
           <DarkModeProvider>
             <ReactQueryDevtools initialIsOpen={false} />
-
             <GlobalStyles />
             <BrowserRouter>
-              <Suspense
-                fallback={
-                  <Toaster
-                    position="top-right"
-                    gutter={12}
-                    containerStyle={{ margin: "8px" }}
-                    toastOptions={{
-                      success: {
-                        duration: 3000,
-                      },
-                      error: {
-                        duration: 5000,
-                      },
-                      style: {
-                        fontSize: "16px",
-                        maxWidth: "500px",
-                        padding: "16px 24px",
-                        backgroundColor: "var(--color-grey-0)",
-                        color: "var(--color-grey-700)",
-                      },
-                    }}
-                  />
-                }
-              >
+              <Suspense fallback={<Loader />}>
                 <Routes>
-                  <Route path="/" element={<Landing />} />
-                  <Route path="/product" element={<Product />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/sign-up" element={<Signup />} />
-                  <Route path="/forgot-password" element={<ForgotPassword />} />
-                  <Route path="/otp" element={<Otp />} />
-                  <Route path="/terms" element={<Terms />} />
-                  <Route path="/get-started" element={<GetStarted />} />
-                  <Route path="*" element={<PageNotFound />} />
-
                   <Route
                     path="/app"
                     element={
@@ -109,9 +75,39 @@ function App() {
                     <Route path="settings" element={<Settings />} />
                     <Route path="account" element={<Account />} />
                   </Route>
+                  <Route path="/" element={<Landing />} />
+                  <Route path="/product" element={<Product />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/sign-up" element={<Signup />} />
+                  <Route path="/forgot-password" element={<ForgotPassword />} />
+                  <Route path="/otp" element={<Otp />} />
+                  <Route path="/terms" element={<Terms />} />
+                  <Route path="/get-started" element={<GetStarted />} />
+                  <Route path="*" element={<PageNotFound />} />
                 </Routes>
               </Suspense>
             </BrowserRouter>
+            <Toaster
+              position="top-right"
+              gutter={12}
+              containerStyle={{ margin: "8px" }}
+              toastOptions={{
+                success: {
+                  duration: 3000,
+                },
+                error: {
+                  duration: 5000,
+                },
+                style: {
+                  fontSize: "16px",
+                  maxWidth: "500px",
+                  padding: "16px 24px",
+                  backgroundColor: "var(--color-grey-0)",
+                  color: "var(--color-grey-700)",
+                },
+              }}
+            />
           </DarkModeProvider>
         </QueryClientProvider>
       </PopUpProvider>

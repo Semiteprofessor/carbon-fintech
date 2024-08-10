@@ -118,7 +118,7 @@ const PopUpForm = ({ title }) => {
         backgroundColor="#2B007A"
         color="#fff"
         padding="12px 24px 12px 24px"
-        borderRadius={5}
+        borderRadius="5px"
         width="100%"
       />
 

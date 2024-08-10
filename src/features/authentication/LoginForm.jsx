@@ -3,10 +3,13 @@ import { useEffect, useState } from "react";
 import Form from "../../ui/Form";
 import Input from "../../ui/Input";
 import FormRowVertical from "../../ui/FormRowVertical";
-import Button from "../../ui/Button";
+// import Button from "../../ui/Button";
+import Button1 from "../../ui/Button1";
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import ErrorMessage from "../../ui/ErrorMessage";
+import SpinnerMini from "../../ui/SpinnerMini";
 
 const Container = styled.div`
   display: flex;
@@ -49,17 +52,25 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { login, isAuthenticated } = useAuth();
+  const { login, isAuthenticated, isLoading } = useAuth();
 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Login with email:", email, "password:", password);
+    console.log(isAuthenticated);
 
-    if (email && password) login(email, password);
-    setEmail("");
-    setPassword("");
+    if (email && password) {
+      login(email, password);
+    } else {
+      <ErrorMessage />;
+    }
+
+    // () => {
+    //   setEmail("");
+    //   setPassword("");
+    // };
   };
 
   useEffect(() => {
@@ -76,7 +87,7 @@ const LoginForm = () => {
           placeholder="Enter Email Address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          //   disabled={isLoading}
+          disabled={isLoading}
         />
       </FormRowVertical>
 
@@ -88,7 +99,7 @@ const LoginForm = () => {
           placeholder="Enter Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          //   disabled={isLoading}
+          disabled={isLoading}
         />
       </FormRowVertical>
 
@@ -100,7 +111,11 @@ const LoginForm = () => {
         <ForgotPassword to="/forgot-password">Forgot Password?</ForgotPassword>
       </Container>
 
-      <Button
+      <Button1 size="large" disabled={isLoading}>
+        {!isLoading ? "Log in" : <SpinnerMini />}
+      </Button1>
+
+      {/* <Button
         type="submit"
         title="Log in"
         backgroundColor="#2B007A"
@@ -108,7 +123,7 @@ const LoginForm = () => {
         padding="12px 24px 12px 24px"
         borderRadius="5px"
         width="100%"
-      />
+      /> */}
 
       <DontHave>
         <Label>Don't have an account?</Label>

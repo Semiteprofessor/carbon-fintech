@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Logo from "./Logo";
+import { useAuth } from "../context/AuthContext";
 
 const Wrapper = styled.nav`
   position: absolute;
@@ -57,6 +58,8 @@ const RightList = styled(NavLink)`
 `;
 
 const Nav = () => {
+  const { isAuthenticated } = useAuth();
+  console.log(isAuthenticated);
   return (
     <Wrapper>
       <Logo />
