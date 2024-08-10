@@ -3,6 +3,7 @@ import {
   useCallback,
   useContext,
   useMemo,
+  useReducer,
   useState,
 } from "react";
 import axios from "axios";
@@ -10,39 +11,93 @@ import { BASE_URL } from "../base";
 
 const AuthContext = createContext();
 
-const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState(null);
-  const [userToken, setUserToken] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState("");
+const initialState = {
+  isAuthenticated: false,
+  user: null,
+  userToken: null,
+  isLoading: true,
+  error: "",
+};
 
-  const login = useCallback(() => {
-    return async (email, password) => {
-      await axios(`${BASE_URL}/user/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: JSON.stringify({ email, password }),
+const reduce = (state, action) => {
+  switch (action.type) {
+    case "LOGIN":
+      return {
+        ...state,
+        isAuthenticated: true,
+        user: action.payload,
+        userToken: action.payload.token,
+        isLoading: false,
+        error: "",
+      };
+    case "LOGOUT":
+      return { ...state, initialState };
+    case "SET_ERROR":
+      return {
+        ...state,
+        error: action.payload.error,
+        isLoading: false,
+      };
+    default:
+      return state;
+  }
+};
+
+const AuthProvider = ({ children }) => {
+  const [{ user, isAuthenticated, userToken, error, isLoading }, dispatch] =
+    useReducer(reduce, initialState);
+  // const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // const [user, setUser] = useState(null);
+  // const [userToken, setUserToken] = useState(null);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [error, setError] = useState("");
+
+  const login = async (email, password) => {
+    await axios(`${BASE_URL}/user/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: JSON.stringify({ email, password }),
+    })
+      .then((response) => {
+        console.log(response.data);
+        if (response.status !== 200) {
+          throw new Error(response.data.message);
+        }
+        dispatch({ type: "LOGIN", payload: response.data });
       })
-        .then((response) => {
-          console.log(response.data);
-          if (response.status !== 200) {
-            throw new Error(response.data.message);
-          }
-          localStorage.setItem("userToken", response.data.token);
-          setUser(response.data.data);
-          setUserToken(response.data.token);
-          setIsAuthenticated(true);
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          setError(error);
-          setIsLoading(false);
-        });
-    };
-  }, []);
+      .catch((error) => {
+        dispatch({ type: "error", payload: error.data.message });
+      });
+  };
+
+  // const login = useCallback(() => {
+  //   return async (email, password) => {
+  //     await axios(`${BASE_URL}/user/login`, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       data: JSON.stringify({ email, password }),
+  //     })
+  //       .then((response) => {
+  //         console.log(response.data);
+  //         if (response.status !== 200) {
+  //           throw new Error(response.data.message);
+  //         }
+  //         localStorage.setItem("userToken", response.data.token);
+  //         setUser(response.data.data);
+  //         setUserToken(response.data.token);
+  //         setIsAuthenticated(true);
+  //         setIsLoading(false);
+  //       })
+  //       .catch((error) => {
+  //         setError(error);
+  //         setIsLoading(false);
+  //       });
+  //   };
+  // }, []);
 
   const logout = () => {
     localStorage.removeItem("userToken");

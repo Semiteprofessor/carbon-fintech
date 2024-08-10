@@ -63,7 +63,7 @@ const LoginForm = () => {
   };
 
   useEffect(() => {
-    if (isAuthenticated) navigate("/dashboard", { replace: true });
+    if (isAuthenticated) navigate("/app", { replace: true });
   }, [isAuthenticated, navigate]);
 
   return (

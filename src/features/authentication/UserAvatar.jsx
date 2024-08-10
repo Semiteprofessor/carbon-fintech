@@ -23,6 +23,7 @@ const Avatar = styled.img`
 
 const UserAvatar = () => {
   const { user } = useAuth();
+  if (!user) return;
 
   console.log(user);
 
@@ -35,7 +36,7 @@ const UserAvatar = () => {
         alt={`Avatar of John Doe`}
       />
       {/* <span>{fullName}</span> */}
-      <span>{`${user.othernames} ${user.surname}`}</span>
+      <span>{`${user.othernames || "John"} ${user.surname || "Doe"}`}</span>
     </StyledUserAvatar>
   );
 };

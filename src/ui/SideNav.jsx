@@ -56,37 +56,37 @@ const SideNav = () => {
     <nav>
       <NavList>
         <li>
-          <StyledNavLink to="/dashboard">
+          <StyledNavLink to="/app/dashboard">
             <GoHomeFill />
             <span>Dashboard</span>
           </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="/activity">
+          <StyledNavLink to="/app/activity">
             <HiChartBar />
             <span>Activity</span>
           </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="/bills">
+          <StyledNavLink to="/app/bills">
             <FaCreditCard />
             <span>Bills</span>
           </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="/transactions">
+          <StyledNavLink to="/app/transactions">
             <FaExchangeAlt />
             <span>Transactions</span>
           </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="/complaints">
+          <StyledNavLink to="/app/complaints">
             <RiMessage3Fill />
             <span>Complaints</span>
           </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="/settings">
+          <StyledNavLink to="/app/settings">
             <HiMiniCog6Tooth />
             <span>Settings</span>
           </StyledNavLink>
