@@ -18,8 +18,7 @@ const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, isLoading } = useAuth();
 
   useEffect(() => {
-    if (!isAuthenticated && !isLoading)
-      navigate("/", { replace: true });
+    if (!isAuthenticated && !isLoading) navigate("/app/dashboard");
   }, [isAuthenticated, isLoading, navigate]);
 
   if (isLoading)

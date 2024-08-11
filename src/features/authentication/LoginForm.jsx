@@ -67,14 +67,14 @@ const LoginForm = () => {
       <ErrorMessage />;
     }
 
-    // () => {
-    //   setEmail("");
-    //   setPassword("");
-    // };
+    () => {
+      setEmail("");
+      setPassword("");
+    };
   };
 
   // useEffect(() => {
-  //   if (!isAuthenticated) navigate("/", { replace: true });
+  //   if (!isAuthenticated) navigate("/app/dashboard", { replace: true });
   // }, [isAuthenticated, navigate]);
 
   return (
